@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4JHXEZX7SY"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-4JHXEZX7SY');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-4JHXEZX7SY');
     </script>
-    
+
+
     <title>William F Cockrill Jr • ECE Portfolio • VMI Class of 2027</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -116,21 +117,25 @@
         }
     </style>
 </head>
-<body class="bg-zinc-950 text-zinc-200">
-    <!-- NAVBAR -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/95 backdrop-blur-lg border-b border-zinc-800">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex items-center justify-between h-16">
+                <body class="bg-zinc-950 text-zinc-200">
+                    <!-- NAVBAR -->
+                    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/95 backdrop-blur-lg border-b border-zinc-800">
+                        <div class="max-w-7xl mx-auto px-6">
+                            <div class="flex items-center justify-between h-16">
+                            
                 <!-- Logo -->
-                <div class="flex items-center gap-x-3">
-                <img src="VMISpider.jpg" 
-                    alt="VMI Logo" 
-                    class="h-10 w-auto object-contain">
-                <div>
-                    <span class="font-semibold tracking-tight text-xl">William F Cockrill Jr</span>
-                    <span class="text-xs text-zinc-500 block -mt-1">ECE '27</span>
-                </div>
-            </div>
+                <!-- Clickable VMI Logo -->
+                <a href="https://www.vmi.edu/" target="_blank" 
+                class="flex items-center gap-x-3 hover:opacity-80 transition-opacity">
+                    <img src="VMISpider.jpg" 
+                        alt="VMI Logo" 
+                        class="h-10 w-auto object-contain">
+                    
+                    <div>
+                        <span class="font-semibold tracking-tight text-xl">William F Cockrill Jr</span>
+                        <span class="text-xs text-zinc-500 block -mt-1">ECE '27</span>
+                    </div>
+                </a>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center gap-x-8 text-sm">
@@ -179,11 +184,11 @@
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO -
     <header class="pt-16 min-h-[100dvh] flex items-center relative overflow-hidden circuit-bg">
         <div class="max-w-5xl mx-auto px-6 pt-12 pb-16">
             <div class="max-w-3xl">
-                <!-- Badge -->
+                <!-- Badge 
                 <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-2xl bg-zinc-900 border border-zinc-800 mb-6">
                     <div class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
                     <span class="text-sm text-zinc-400">VMI Institute Honors • Merit Scholar • Class of 2027</span>
@@ -232,65 +237,199 @@
             </div>
         </div>
 
-        <!-- Subtle decorative element -->
+        <!-- Subtle decorative element 
         <div class="absolute bottom-12 right-8 hidden lg:block">
             <div class="flex items-center gap-x-2 text-xs uppercase tracking-[3px] text-zinc-600">
                 <div class="h-px w-8 bg-zinc-700"></div>
                 <span>LEXINGTON, VA • NASHVILLE, TN</span>
             </div>
         </div>
-    </header>
+    </header>       -->
 
-    <!-- ABOUT -->
-    <section id="about" class="max-w-5xl mx-auto px-6 py-20 border-t border-zinc-800">
-        <div class="grid md:grid-cols-12 gap-x-12 gap-y-10 items-start">
-            <div class="md:col-span-5">
-                <div class="sticky top-20">
-                    <span class="text-red-600 text-sm font-medium tracking-widest">CHAPTER 01</span>
-                    <h2 class="section-header tracking-tighter mt-2">About me</h2>
-                    <p class="mt-4 text-zinc-400">I design systems that need to work when it matters most.</p>
-                </div>
-            </div>
+<header class="pt-16 min-h-[100dvh] flex items-center relative overflow-hidden circuit-bg">
+    
+    <!-- Animated Background Canvas -->
+    <canvas id="hero-canvas" class="absolute inset-0 w-full h-full z-0"></canvas>
+    
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-zinc-950/70 z-10"></div>
+
+    <div class="max-w-5xl mx-auto px-6 pt-12 pb-16 relative z-20">
+        <div class="max-w-3xl">
             
-            <div class="md:col-span-7 text-[15px] leading-relaxed text-zinc-300 space-y-6">
-                <p>
-                    I am a rising senior at Virginia Military Institute pursuing a degree in Electrical 
-                    and Computer Engineering with a minor in Applied Mathematics, and I am planning to enter the civilian 
-                    engineering workforce immediately after graduation in May 2027.  My academic 
-                    background includes C/C++ programming, computer architecture, circuits, digital logic, electronics, 
-                    embedded systems, microcontrollers, Linux, SystemVerilog, MATLAB, LTspice, Vivado and FPGA exposure. I 
-                    currently have a 3.75 overall GPA and a 3.875 major GPA, and I am an Institute Honors Program student, 
-                    General Peay merit scholarship recipient, and Dean’s List student. 
-                </p>
-                <p>
-                    What makes my background different from many early-career engineering candidates is that I have also 
-                    worked full-time for the last four summers as a Technical Analyst with HCA Healthcare at TriStar Southern 
-                    Hills Medical Center. In that role, I have supported facility and division IT systems, responded to technical 
-                    incidents and user requests, assisted with hardware and software integration, supported clinical, and 
-                    administrative workflows, and learned to troubleshoot in a high-reliability environment where system 
-                    performance, documentation, communication, and uptime matter. 
-                </p>
-                <p>
-                    VMI has further strengthened my discipline, accountability, and leadership. I have served in cadet leadership 
-                    roles, including Squad Corporal and Platoon Sergeant, and have been selected as Platoon Lieutenant for the 
-                    2026–2027 academic year. I also serve as the Electrical and Computer Engineering elected class 
-                    representative for the Class of 2027 and as a calculus tutor. These experiences have prepared me to work in 
-                    structured environments, communicate clearly, lead responsibly, and execute under pressure. 
-                </p>
+                        <!-- Clickable VMI Honors Badge -->
+            <a href="https://www.vmi.edu/academics/peay-merit-scholarships/" target="_blank"
+            class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-2xl bg-zinc-900 border border-zinc-800 mb-6 
+                    animate-[fadeInLeft_0.8s_ease-out_0.6s_forwards] opacity-0 
+                    hover:bg-zinc-800 hover:border-zinc-700 transition-colors">
                 
-                <div class="pt-4 flex flex-wrap gap-3">
-                    <div class="inline-flex items-center gap-x-2 px-4 h-9 rounded-2xl bg-zinc-900 text-sm border border-zinc-800">
-                        <i class="fas fa-graduation-cap text-red-600"></i>
-                        <span>Institute Honors • Merit Scholar</span>
-                    </div>
-                    <div class="inline-flex items-center gap-x-2 px-4 h-9 rounded-2xl bg-zinc-900 text-sm border border-zinc-800">
-                        <i class="fas fa-microchip text-red-600"></i>
-                        <span>ECE + Applied Math</span>
-                    </div>
+                <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                
+                <span class="text-sm text-zinc-400 hover:text-zinc-200 transition-colors">
+                    VMI Institute Honors • Merit Scholar • Class of 2027
+                </span>
+            </a>
+
+            <!-- Heading + Paragraph (fade + slide down from top) -->
+            <div class="animate-[fadeInDown_0.8s_ease-out_0.4s_forwards] opacity-0">
+                <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter leading-none mb-4">
+                    Building mission-critical<br>embedded systems.
+                </h1>
+                
+                <p class="max-w-md text-xl text-zinc-400 mb-10">
+                    Electrical &amp; Computer Engineering cadet at the Virginia Military Institute with four years of hands-on technical experience supporting 
+                    enterprise healthcare systems in a high-reliability environment. 
+                    Seeking an engineering role where technical aptitude, discipline, and mission focus can contribute to innovative solutions.
+                </p>
+            </div>
+
+            <!-- Buttons (slide in from left) -->
+            <div class="flex flex-wrap items-center gap-4 animate-[fadeInLeft_0.8s_ease-out_0.9s_forwards] opacity-0">
+                <button onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })" 
+                        class="group flex items-center justify-center gap-x-3 bg-white hover:bg-zinc-100 active:bg-zinc-200 transition-all text-zinc-950 font-semibold px-8 h-14 rounded-2xl text-base shadow-lg shadow-black/20">
+                    <span>Explore Projects</span>
+                    <i class="fas fa-arrow-right group-active:translate-x-0.5 transition-transform"></i>
+                </button>
+                
+                <button onclick="window.open('https://github.com/cockrillwf27', '_blank')"
+                        class="flex items-center justify-center gap-x-3 border border-zinc-700 hover:bg-zinc-900 transition-colors px-7 h-14 rounded-2xl text-base">
+                    <i class="fab fa-github text-xl"></i>
+                    <span>View on GitHub</span>
+                </button>
+            </div>
+
+            <!-- Stats (slide in from left) -->
+            <div class="flex items-center gap-x-8 mt-12 text-sm animate-[fadeInLeft_0.8s_ease-out_1.2s_forwards] opacity-0">
+                <div>
+                    <span class="block text-2xl font-semibold tracking-tighter">3.75</span>
+                    <span class="text-zinc-500 text-xs tracking-wider">GPA</span>
+                </div>
+                <div class="h-3 w-px bg-zinc-800"></div>
+                <div>
+                    <span class="block text-2xl font-semibold tracking-tighter">3.85</span>
+                    <span class="text-zinc-500 text-xs tracking-wider">MAJOR GPA</span>
+                </div>
+                <div class="h-3 w-px bg-zinc-800"></div>
+                <div>
+                    <span class="block text-2xl font-semibold tracking-tighter">33</span>
+                    <span class="text-zinc-500 text-xs tracking-wider">ACT SCORE</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Bottom right text -->
+    <div class="absolute bottom-12 right-8 hidden lg:block z-20">
+        <div class="flex items-center gap-x-2 text-xs uppercase tracking-[3px] text-zinc-600">
+            <div class="h-px w-8 bg-zinc-700"></div>
+            <span>LEXINGTON, VA • NASHVILLE, TN</span>
+        </div>
+    </div>
+</header>
+
+
+<style>
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+</style>
+
+
+    <!-- ABOUT -->
+    <section id="about" class="max-w-5xl mx-auto px-6 py-20 border-t border-zinc-800">
+    <div class="grid md:grid-cols-12 gap-x-12 gap-y-10 items-start">
+        
+        <!-- Left Column: Title + Image -->
+        <div class="md:col-span-5">
+            <div class="sticky top-20">
+                <!-- Title -->
+                <span class="text-red-600 text-sm font-medium tracking-widest">CHAPTER 01</span>
+                <h2 class="section-header tracking-tighter mt-2">About me</h2>
+                <p class="mt-4 text-zinc-400">I design systems that need to work when it matters most.</p>
+
+                <!-- Image (below the title) -->
+                <div class="mt-8">
+                    <img 
+                        src="headshot.png" 
+                        alt="William F. Cockrill Jr" 
+                        class="w-full max-w-[260px] rounded-2xl object-cover shadow-xl border border-zinc-800"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Paragraphs -->
+        <div class="md:col-span-7 text-[15px] leading-relaxed text-zinc-300 space-y-6">
+            <p>
+                I am a rising senior at Virginia Military Institute pursuing a degree in Electrical 
+                and Computer Engineering with a minor in Applied Mathematics, and I am planning to enter the civilian 
+                engineering workforce immediately after graduation in May 2027. My academic 
+                background includes C/C++ programming, computer architecture, circuits, digital logic, electronics, 
+                embedded systems, microcontrollers, Linux, SystemVerilog, MATLAB, LTspice, Vivado and FPGA exposure. I 
+                currently have a 3.75 overall GPA and a 3.875 major GPA, and I am an Institute Honors Program student, 
+                General Peay merit scholarship recipient, and Dean’s List student. 
+            </p>
+            <p>
+                What makes my background different from many early-career engineering candidates is that I have also 
+                worked full-time for the last four summers as a Technical Analyst with HCA Healthcare at TriStar Southern 
+                Hills Medical Center. In that role, I have supported facility and division IT systems, responded to technical 
+                incidents and user requests, assisted with hardware and software integration, supported clinical and 
+                administrative workflows, and learned to troubleshoot in a high-reliability environment where system 
+                performance, documentation, communication, and uptime matter. 
+            </p>
+            <p>
+                VMI has further strengthened my discipline, accountability, and leadership. I have served in cadet leadership 
+                roles, including Squad Corporal and Platoon Sergeant, and have been selected as Platoon Lieutenant for the 
+                2026–2027 academic year. I also serve as the Electrical and Computer Engineering elected class 
+                representative for the Class of 2027 and as a calculus tutor. These experiences have prepared me to work in 
+                structured environments, communicate clearly, lead responsibly, and execute under pressure. 
+            </p>
+            
+            <!-- Clickable Badges in About Me -->
+            <!-- Clickable Badges in About Me -->
+<div class="pt-4 flex flex-wrap gap-3">
+    
+    <!-- Institute Honors Badge -->
+    <a href="https://www.vmi.edu/academics/peay-merit-scholarships/" 
+       target="_blank"
+       class="inline-flex items-center gap-x-2 px-5 py-2 rounded-2xl bg-zinc-900 text-sm border border-zinc-800 
+              hover:bg-zinc-800 hover:border-zinc-700 active:scale-[0.985] transition-all duration-150 cursor-pointer">
+        <i class="fas fa-graduation-cap text-red-600"></i>
+        <span class="font-medium text-zinc-200">Institute Honors • Merit Scholar</span>
+    </a>
+
+    <!-- ECE + Applied Math Badge -->
+    <a href="https://www.vmi.edu/academics/departments/electrical-and-computer-engineering/" 
+       target="_blank"
+       class="inline-flex items-center gap-x-2 px-5 py-2 rounded-2xl bg-zinc-900 text-sm border border-zinc-800 
+              hover:bg-zinc-800 hover:border-zinc-700 active:scale-[0.985] transition-all duration-150 cursor-pointer">
+        <i class="fas fa-microchip text-red-600"></i>
+        <span class="font-medium text-zinc-200">ECE + Applied Math</span>
+    </a>
+
+</div>
+
+        </div>
+    </div>
+</section>
 
     <!-- PROJECTS -->
     <section id="projects" class="bg-zinc-900 border-y border-zinc-800 py-20">
@@ -565,29 +704,29 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <!-- Embedded -->
-            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-                <div class="flex items-center gap-x-3 mb-4">
-                    <div class="w-9 h-9 rounded-2xl bg-red-600/10 flex items-center justify-center">
-                        <i class="fas fa-microcontroller text-red-600"></i>
-                    </div>
-                    <h4 class="font-semibold">Embedded &amp; IoT Systems</h4>
-                </div>
-                <div class="flex flex-wrap gap-2 text-sm">
-                    <span class="tech-tag">ESP32 / ESP8266</span>
-                    <span class="tech-tag">Arduino / ATmega</span>
-                    <span class="tech-tag">STM32</span>
-                    <span class="tech-tag">FreeRTOS</span>
-                    <span class="tech-tag">Low-Power Design</span>
-                    <span class="tech-tag">LoRa / WiFi / BLE</span>
-                    <span class="tech-tag">Sensor Fusion</span>
-                </div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+        <div class="flex items-center gap-x-3 mb-4">
+            <div class="w-9 h-9 rounded-2xl bg-red-600/10 flex items-center justify-center">
+                <i class="fas fa-microchip text-red-600"></i>
             </div>
+            <h4 class="font-semibold">Embedded &amp; IoT Systems</h4>
+        </div>
+        <div class="flex flex-wrap gap-2 text-sm">
+            <span class="tech-tag">ESP32 / ESP8266</span>
+            <span class="tech-tag">Arduino / ATmega</span>
+            <span class="tech-tag">STM32</span>
+            <span class="tech-tag">FreeRTOS</span>
+            <span class="tech-tag">Low-Power Design</span>
+            <span class="tech-tag">LoRa / WiFi / BLE</span>
+            <span class="tech-tag">Sensor Fusion</span>
+        </div>
+    </div>
 
             <!-- Digital Design -->
             <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
                 <div class="flex items-center gap-x-3 mb-4">
                     <div class="w-9 h-9 rounded-2xl bg-red-600/10 flex items-center justify-center">
-                        <i class="fas fa-microchip text-red-600"></i>
+                        <i class="fas fa-server text-red-600"></i>
                     </div>
                     <h4 class="font-semibold">Digital Architecture &amp; HDL</h4>
                 </div>
@@ -704,7 +843,7 @@
                     </div>
                 </div>
 
-                <!-- VMI Leadership -->
+                <!-- VMI Cadet Platoon Lieutenant -->
                 <div class="flex gap-6">
                     <div class="w-12 h-12 rounded-2xl bg-zinc-800 flex-shrink-0 flex items-center justify-center border border-zinc-700">
                         <i class="fas fa-users text-2xl text-red-600"></i>
@@ -712,78 +851,97 @@
                     <div class="flex-1">
                         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-y-1">
                             <div>
-                                <h4 class="font-semibold">Cadet Platoon Lieutenant &amp; ECE Class Representative</h4>
-                                <p class="text-zinc-400">Virginia Military Institute</p>
+                                <h4 class="font-semibold">Cadet Leadership Progression - VMI Corps of Cadets</h4>
+                                <p class="text-zinc-400">Platoon Lieutenant (2026-Present) | Platoon Sergeant (2025-2026) | Squad Corporal (2024-2025) </p>
                             </div>
                             <span class="text-sm text-zinc-500 font-mono">2024 — Present</span>
                         </div>
                         <p class="mt-3 text-sm text-zinc-300 max-w-3xl">
-                            Lead a platoon through rigorous academic, physical, and operational requirements. 
-                            Elected by peers to represent the ECE class. Focus on developing initiative, 
-                            clear communication, and team performance under pressure.
+                            Progressed from leading 10 cadets (direct mentorship on skills/teamwork/accountability) to overseeing 50 
+                            cadets as Platoon Sergeant/Lieutenant (accountability, discipline, operations, junior leader development). Built 
+                            initiative, communication, and team leadership in VMI's rigorous environment; selected for top platoon role. 
                         </p>
                     </div>
                 </div>
 
-                <!-- Rugby --
+                <!-- ECE Class Representative -->
                 <div class="flex gap-6">
                     <div class="w-12 h-12 rounded-2xl bg-zinc-800 flex-shrink-0 flex items-center justify-center border border-zinc-700">
-                        <i class="fas fa-running text-2xl text-red-600"></i>
+                        <i class="fas fa-comments text-2xl text-red-600"></i>
                     </div>
                     <div class="flex-1">
                         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-y-1">
                             <div>
-                                <h4 class="font-semibold">Collegiate Rugby Athlete (Lightweight Forward)</h4>
-                                <p class="text-zinc-400">VMI Rugby • 7s &amp; 15s Seasons</p>
+                                <h4 class="font-semibold">ELECTRICAL & COMPUTER ENGINEERING ELECTED CLASS REPRESENTATIVE FOR ’27</h4>
+                                <p class="text-zinc-400">Virginia Military Institute</p>
                             </div>
-                            <span class="text-sm text-zinc-500 font-mono">Ongoing</span>
+                            <span class="text-sm text-zinc-500 font-mono">2024-Present</span>
                         </div>
                         <p class="mt-3 text-sm text-zinc-300 max-w-3xl">
-                            Compete at 215 lbs in both sevens and fifteens. Emphasize physical resilience, 
-                            recovery protocols, and team strategy. Regularly prepares for PT tests including 
-                            ruck marches and max-rep strength events.
+                           Provide guidance and support on academic and departmental matters to underclassmen. Facilitate communication amoung students
+                           and faculty to improve curriculum, resources, student experience, and advocate for student concerns at faculty meetings.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-    </section> -->
+    </section> 
 
     <!-- CONTACT -->
-    <section id="contact" class="max-w-3xl mx-auto px-6 py-20 text-center">
-        <div class="mx-auto max-w-md">
-            <span class="text-red-600 text-sm font-medium tracking-[2px]">LET'S CONNECT</span>
-            <h2 class="section-header tracking-tighter mt-3 mb-4">Ready to build something that matters?</h2>
-           
-           <!-- <p class="text-zinc-400 mb-8">I'm currently seeking engineering internships and co-ops for Summer 2026, 
-            particularly in embedded systems, defense technology, aerospace, or healthcare hardware.</p>
-            -->
+<section id="contact" class="max-w-3xl mx-auto px-6 py-20 text-center">
+    <div class="mx-auto max-w-md">
+        <span class="text-red-600 text-sm font-medium tracking-[2px]">LET'S CONNECT</span>
+        <h2 class="section-header tracking-tighter mt-3 mb-4">Ready to build something that matters?</h2>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="mailto:wfcockrilljr@gmail.com" 
-                   class="flex-1 sm:flex-none inline-flex items-center justify-center gap-x-3 h-14 px-8 rounded-2xl bg-white text-zinc-950 font-semibold hover:bg-zinc-100 active:bg-zinc-200 transition-colors">
-                    <i class="fas fa-envelope"></i>
-                    <span>Send Email</span>
-                </a>
-                
-                <a href="https://github.com/cockrillwf27" target="_blank"
-                   class="flex-1 sm:flex-none inline-flex items-center justify-center gap-x-3 h-14 px-8 rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-colors">
-                    <i class="fab fa-github text-xl"></i>
-                    <span>GitHub Profile</span>
-                </a>
-            </div>
+            <!-- Email -->
+            <a href="mailto:wfcockrilljr@gmail.com" 
+               class="flex-1 sm:flex-none inline-flex items-center justify-center gap-x-3 h-14 px-8 rounded-2xl bg-white text-zinc-950 font-semibold hover:bg-zinc-100 active:bg-zinc-200 transition-colors">
+                <i class="fas fa-envelope"></i>
+                <span>Send Email</span>
+            </a>
             
-            <p class="text-xs text-zinc-500 mt-8">Open to discussions about thesis collaboration, research opportunities, or technical projects.</p>
+            <!-- GitHub -->
+            <a href="https://github.com/cockrillwf27" target="_blank"
+               class="flex-1 sm:flex-none inline-flex items-center justify-center gap-x-3 h-14 px-8 rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-colors">
+                <i class="fab fa-github text-xl"></i>
+                <span>GitHub</span>
+            </a>
+            
         </div>
-    </section>
+
+        <!-- LinkedIn + Resume Row -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-4">
+            
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/william-cockrill/" target="_blank"
+               class="flex-1 sm:flex-none inline-flex items-center justify-center gap-x-3 h-14 px-8 rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-colors">
+                <i class="fab fa-linkedin text-xl"></i>
+                <span>LinkedIn</span>
+            </a>
+            
+            <!-- Resume -->
+            <a href="Cockrill_Resume.pdf" download
+               class="flex-1 sm:flex-none inline-flex items-center justify-center gap-x-3 h-14 px-8 rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-colors">
+                <i class="fas fa-file-download"></i>
+                <span>Download Resume</span>
+            </a>
+            
+        </div>
+        
+        <p class="text-xs text-zinc-500 mt-8">Open to discussions about thesis collaboration, research opportunities, or technical projects.</p>
+    </div>
+</section>
 
     <footer class="border-t border-zinc-800 py-8 text-center text-xs text-zinc-500">
         <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-y-2">
             <div>© 2026 William F. Cockrill Jr. • VMI Class of 2027</div>
             <div class="flex items-center gap-x-5">
-                <span>Built with Tailwind CSS</span>
+               <!--- <span>Built with Tailwind CSS</span> 
                 <span class="hidden md:inline">•</span>
                 <a href="#" class="hover:text-zinc-400 transition-colors">View Source</a>
+                -->
             </div>
         </div>
     </footer>
@@ -1079,5 +1237,89 @@
             }
         });
     </script>
+
+   <script>
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let particles = [];
+    const particleCount = 75;     // Number of dots (lower = more subtle)
+    const maxDistance = 130;      // How close dots need to be to connect
+
+    function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 1;
+            this.speedX = Math.random() * 0.5 - 0.25;
+            this.speedY = Math.random() * 0.5 - 0.25;
+        }
+
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+
+        draw() {
+            ctx.fillStyle = '#f87171'; // Red color (change to #22d3ee for cyan)
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    function initParticles() {
+        particles = [];
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+    }
+
+    function connectParticles() {
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < maxDistance) {
+                    ctx.strokeStyle = `rgba(248, 113, 113, ${1 - distance / maxDistance})`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+        }
+
+        connectParticles();
+        requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
+</script>
+
 </body>
 </html>
