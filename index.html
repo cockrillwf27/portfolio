@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William F Cockrill Jr • ECE Portfolio • VMI Class of 2027</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --primary: #22d3ee;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .font-display {
+            font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif;
+            font-weight: 600;
+        }
+
+        .section-header {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        .nav-active {
+            color: #22d3ee;
+            position: relative;
+        }
+        
+        .nav-active:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #22d3ee, transparent);
+        }
+
+        .project-card {
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+                       box-shadow 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .tech-tag {
+            font-size: 0.75rem;
+            padding: 0.125rem 0.625rem;
+            border-radius: 9999px;
+            background-color: #18181b;
+            color: #a1a1aa;
+            transition: all 0.1s ease;
+        }
+
+        .tech-tag:hover {
+            background-color: #27272a;
+            color: #e4e4e7;
+        }
+
+        .modal {
+            animation: modalPopIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes modalPopIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .circuit-bg {
+            background-image: 
+                linear-gradient(rgba(163, 163, 172, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(163, 163, 172, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #e4e4e7, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ee-accent {
+            color: #22d3ee;
+        }
+
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200">
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/95 backdrop-blur-lg border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center">
+                        <span class="text-zinc-950 font-bold text-xl tracking-tighter">WC</span>
+                    </div>
+                    <div>
+                        <span class="font-semibold tracking-tight text-xl">William Cockrill </span>
+                        <span class="text-xs text-zinc-500 block -mt-1">ECE '27</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm">
+                    <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+                    <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+                    <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
+                    <a href="#experience" class="hover:text-cyan-400 transition-colors">Experience</a>
+                </div>
+
+                <div class="hidden md:flex items-center gap-x-3">
+                    <a href="https://github.com/cockrillwf27" target="_blank" 
+                       class="flex items-center gap-x-2 px-4 py-2 text-sm rounded-xl border border-zinc-800 hover:bg-zinc-900 transition-colors">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
+                            class="px-5 py-2 text-sm font-medium bg-white text-zinc-950 rounded-xl hover:bg-zinc-100 transition-colors flex items-center gap-x-2">
+                        <span>Contact</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-zinc-800 bg-zinc-950">
+            <div class="px-6 py-4 flex flex-col gap-y-3 text-sm">
+                <a href="#about" class="py-2 hover:text-cyan-400">About</a>
+                <a href="#projects" class="py-2 hover:text-cyan-400">Projects</a>
+                <a href="#skills" class="py-2 hover:text-cyan-400">Skills</a>
+                <a href="#experience" class="py-2 hover:text-cyan-400">Experience</a>
+                <div class="pt-3 border-t border-zinc-800 flex flex-col gap-y-3">
+                    <a href="https://github.com/cockrillwf27" target="_blank" class="flex items-center gap-x-2 py-2">
+                        <i class="fab fa-github w-4"></i> <span>GitHub</span>
+                    </a>
+                    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); document.getElementById('mobile-menu').classList.add('hidden')"
+                            class="w-full px-4 py-2.5 bg-white text-zinc-950 rounded-xl text-sm font-medium">
+                        Get in Touch
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="pt-16 min-h-[100dvh] flex items-center relative overflow-hidden circuit-bg">
+        <div class="max-w-5xl mx-auto px-6 pt-12 pb-16">
+            <div class="max-w-3xl">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-2xl bg-zinc-900 border border-zinc-800 mb-6">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    <span class="text-sm text-zinc-400">VMI Institute Honors • Merit Scholar • Class of 2027</span>
+                </div>
+
+                <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter leading-none mb-4">
+                    Building mission-critical<br>embedded systems.
+                </h1>
+                
+                <p class="max-w-md text-xl text-zinc-400 mb-10">
+                    Electrical &amp; Computer Engineering cadet at the Virginia Military Institute with four years of hands-on technical experience supporting 
+                    enterprise healthcare systems in a high-reliability enviornment. 
+                    Seeking an engineering role where technical aptitude, discipline, and mission focus can contribute to innovative solutions.                    
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4">
+                    <button onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })" 
+                            class="group flex items-center justify-center gap-x-3 bg-white hover:bg-zinc-100 active:bg-zinc-200 transition-all text-zinc-950 font-semibold px-8 h-14 rounded-2xl text-base shadow-lg shadow-black/20">
+                        <span>Explore Projects</span>
+                        <i class="fas fa-arrow-right group-active:translate-x-0.5 transition-transform"></i>
+                    </button>
+                    
+                    <button onclick="window.open('https://github.com/cockrillwf27', '_blank')"
+                            class="flex items-center justify-center gap-x-3 border border-zinc-700 hover:bg-zinc-900 transition-colors px-7 h-14 rounded-2xl text-base">
+                        <i class="fab fa-github text-xl"></i>
+                        <span>View on GitHub</span>
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-x-8 mt-12 text-sm">
+                    <div>
+                        <span class="block text-2xl font-semibold tracking-tighter">3.75</span>
+                        <span class="text-zinc-500 text-xs tracking-wider">GPA</span>
+                    </div>
+                    <div class="h-3 w-px bg-zinc-800"></div>
+                    <div>
+                        <span class="block text-2xl font-semibold tracking-tighter">3.85</span>
+                        <span class="text-zinc-500 text-xs tracking-wider">MAJOR GPA</span>
+                    </div>
+                    <div class="h-3 w-px bg-zinc-800"></div>
+                    <div>
+                        <span class="block text-2xl font-semibold tracking-tighter">33</span>
+                        <span class="text-zinc-500 text-xs tracking-wider">ACT SCORE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subtle decorative element -->
+        <div class="absolute bottom-12 right-8 hidden lg:block">
+            <div class="flex items-center gap-x-2 text-xs uppercase tracking-[3px] text-zinc-600">
+                <div class="h-px w-8 bg-zinc-700"></div>
+                <span>LEXINGTON, VA • NASHVILLE, TN</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="max-w-5xl mx-auto px-6 py-20 border-t border-zinc-800">
+        <div class="grid md:grid-cols-12 gap-x-12 gap-y-10 items-start">
+            <div class="md:col-span-5">
+                <div class="sticky top-20">
+                    <span class="text-cyan-400 text-sm font-medium tracking-widest">CHAPTER 01</span>
+                    <h2 class="section-header tracking-tighter mt-2">About me</h2>
+                    <p class="mt-4 text-zinc-400">I design systems that need to work when it matters most.</p>
+                </div>
+            </div>
+            
+            <div class="md:col-span-7 text-[15px] leading-relaxed text-zinc-300 space-y-6">
+                <p>
+                    I am a rising senior at Virginia Military Institute pursuing a degree in Electrical 
+                    and Computer Engineering with a minor in Applied Mathematics, and I am planning to enter the civilian 
+                    engineering workforce immediately after graduation in May 2027.  My academic 
+                    background includes C/C++ programming, computer architecture, circuits, digital logic, electronics, 
+                    embedded systems, microcontrollers, Linux, SystemVerilog, MATLAB, LTspice, Vivado and FPGA exposure. I 
+                    currently have a 3.75 overall GPA and a 3.875 major GPA, and I am an Institute Honors Program student, 
+                    General Peay merit scholarship recipient, and Dean’s List student. 
+                </p>
+                <p>
+                    What makes my background different from many early-career engineering candidates is that I have also 
+                    worked full-time for the last four summers as a Technical Analyst with HCA Healthcare at TriStar Southern 
+                    Hills Medical Center. In that role, I have supported facility and division IT systems, responded to technical 
+                    incidents and user requests, assisted with hardware and software integration, supported clinical, and 
+                    administrative workflows, and learned to troubleshoot in a high-reliability environment where system 
+                    performance, documentation, communication, and uptime matter. 
+                </p>
+                <p>
+                    VMI has further strengthened my discipline, accountability, and leadership. I have served in cadet leadership 
+                    roles, including Squad Corporal and Platoon Sergeant, and have been selected as Platoon Lieutenant for the 
+                    2026–2027 academic year. I also serve as the Electrical and Computer Engineering elected class 
+                    representative for the Class of 2027 and as a calculus tutor. These experiences have prepared me to work in 
+                    structured environments, communicate clearly, lead responsibly, and execute under pressure. 
+                </p>
+                
+                <div class="pt-4 flex flex-wrap gap-3">
+                    <div class="inline-flex items-center gap-x-2 px-4 h-9 rounded-2xl bg-zinc-900 text-sm border border-zinc-800">
+                        <i class="fas fa-graduation-cap text-cyan-400"></i>
+                        <span>Institute Honors • Merit Scholar</span>
+                    </div>
+                    <div class="inline-flex items-center gap-x-2 px-4 h-9 rounded-2xl bg-zinc-900 text-sm border border-zinc-800">
+                        <i class="fas fa-microchip text-cyan-400"></i>
+                        <span>ECE + Applied Math</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="bg-zinc-900 border-y border-zinc-800 py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-end justify-between mb-10">
+                <div>
+                    <span class="text-cyan-400 text-sm font-medium tracking-[2px]">CHAPTER 02</span>
+                    <h2 class="section-header tracking-tighter">Featured Projects</h2>
+                </div>
+                <a href="https://github.com/cockrillwf27" target="_blank" 
+                   class="hidden md:flex items-center gap-x-2 text-sm text-zinc-400 hover:text-white transition-colors">
+                    View all on GitHub <i class="fas fa-external-link-alt ml-1.5 text-xs"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <!-- Project 1: Beehive -->
+                <div class="project-card group bg-zinc-950 border border-zinc-800 rounded-3xl overflow-hidden flex flex-col">
+                    <div class="h-48 bg-zinc-900 relative overflow-hidden">
+                        <img src="beeHive.jpg" alt="Beehive monitoring system" 
+                            class="w-full h-full object-cover">
+                    </div>
+                    
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-semibold text-xl tracking-tight mb-3 group-hover:text-cyan-400 transition-colors">Artificial Beehive Deterrence System</h3>
+                        <p class="text-sm text-zinc-400 line-clamp-3 flex-1">
+                            Led planning and execution of six-week long embedded systems project utilizing ATmega register-level programming, 
+                            coordinating a full-class engineering effort from concept through implementation.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-1.5 mt-4 mb-5">
+                            <span class="tech-tag">Microcontrollers</span>
+                            <span class="tech-tag">ATmega328P</span>
+                            <span class="tech-tag">XBee</span>
+                            <span class="tech-tag">MicroSD logging</span>
+                            <span class="tech-tag">Low-Power</span>
+                            <span class="tech-tag">C++</span>
+                        </div>
+                        
+                        <div class="flex items-center gap-x-3 mt-auto pt-4 border-t border-zinc-800">
+                            <button onclick="showModal(1)" 
+                                    class="flex-1 text-sm py-2.5 rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-colors font-medium">
+                                Details
+                            </button>
+                            <a href="https://github.com/cockrillwf27/Microcontrollers-Beehive" target="_blank"
+                               class="flex-1 text-sm py-2.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-center transition-colors font-medium">
+                                <i class="fab fa-github mr-1.5"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: CPU -->
+                <div class="project-card group bg-zinc-950 border border-zinc-800 rounded-3xl overflow-hidden flex flex-col">
+                    <div class="h-48 bg-zinc-900 relative overflow-hidden">
+                        <img src="CPU.jpg" alt="CPU" 
+                            class="w-full h-full object-cover">
+                    </div>
+                    
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-semibold text-xl tracking-tight mb-3 group-hover:text-cyan-400 transition-colors">32-bit Five-Stage Pipelined CPU</h3>
+                        <p class="text-sm text-zinc-400 line-clamp-3 flex-1">
+                            Designed and verified a complete 32-bit pipelined CPU in SystemVerilog featuring 
+                            hazard...
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-1.5 mt-4 mb-5">
+                            <span class="tech-tag">SystemVerilog</span>
+                            <span class="tech-tag">Pipelining</span>
+                            <span class="tech-tag">Hazard Detection</span>
+                            <span class="tech-tag">Verification</span>
+                            <span class="tech-tag">Machine Code Simulation</span>
+                        </div>
+                        
+                        <div class="flex items-center gap-x-3 mt-auto pt-4 border-t border-zinc-800">
+                            <button onclick="showModal(2)" 
+                                    class="flex-1 text-sm py-2.5 rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-colors font-medium">
+                                Details
+                            </button>
+                            <a href="https://github.com/cockrillwf27/CPU-Design-ComputerArchitecture" target="_blank"
+                               class="flex-1 text-sm py-2.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-center transition-colors font-medium">
+                                <i class="fab fa-github mr-1.5"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Neuromorphic -->
+                <div class="project-card group bg-zinc-950 border border-zinc-800 rounded-3xl overflow-hidden flex flex-col">
+                    <div class="h-48 bg-zinc-900 relative overflow-hidden">
+                        <img src="eventBasedVision.png" alt="Neuromorphic AI" 
+                            class="w-full h-full object-cover">
+                    </div>
+                    
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-semibold text-xl tracking-tight mb-3 group-hover:text-cyan-400 transition-colors">Event-Based Vision for Legacy Interfaces</h3>
+                        <p class="text-sm text-zinc-400 line-clamp-3 flex-1">
+                            Honors thesis exploring neuromorphic event-based vision cameras for non-invasive, real-...
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-1.5 mt-4 mb-5">
+                            <span class="tech-tag">Event Based Vision</span>
+                            <span class="tech-tag">Lucid Triton2</span>
+                            <span class="tech-tag">Anaconda</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">Low-Power</span>
+                            <span class="tech-tag">Jupyter</span>
+                        </div>
+                        
+                        <div class="flex items-center gap-x-3 mt-auto pt-4 border-t border-zinc-800">
+                            <button onclick="showModal(3)" 
+                                    class="flex-1 text-sm py-2.5 rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-colors font-medium">
+                                Details
+                            </button>
+                            <a href="https://github.com/cockrillwf27" target="_blank"
+                               class="flex-1 text-sm py-2.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-center transition-colors font-medium">
+                                <i class="fab fa-github mr-1.5"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Project 4: Reverse Engineering -->
+                <div class="project-card group bg-zinc-950 border border-zinc-800 rounded-3xl overflow-hidden flex flex-col">
+                    <!-- Image / Visual Header -->
+                    <div class="h-48 bg-zinc-900 relative overflow-hidden">
+                        <img src="smartbulb.png" 
+                            alt="Your project name" 
+                            class="w-full h-full object-cover">
+                    </div>
+                    
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-semibold text-xl tracking-tight mb-3 group-hover:text-cyan-400 transition-colors">
+                            Smart Bulb Firmware Reverse Engineering
+                        </h3>
+                        
+                        <p class="text-sm text-zinc-400 line-clamp-3 flex-1">
+                            Reverse engineered the firmware of a commercial Wi-Fi smart bulb to analyze its proprietary communication protocol, 
+                            extract encryption keys, and identify security vulnerabilities in the embedded system.
+                        </p>
+                        
+                        <!-- Tech Tags -->
+                        <div class="flex flex-wrap gap-1.5 mt-4 mb-5">
+                            <span class="tech-tag">Ghidra</span>
+                            <span class="tech-tag">ESP8684</span>
+                            <span class="tech-tag">Firmware RE</span>
+                            <span class="tech-tag">Oracle VirtualBox</span>
+                            <span class="tech-tag">Wireshark</span>
+                            <span class="tech-tag">SPI / UART</span>
+                        </div>
+                        
+                        <!-- Buttons -->
+                        <div class="flex items-center gap-x-3 mt-auto pt-4 border-t border-zinc-800">
+                            <button onclick="showModal(4)" 
+                                    class="flex-1 text-sm py-2.5 rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-colors font-medium">
+                                Details
+                            </button>
+                            <a href="https://github.com/cockrillwf27" target="_blank"
+                            class="flex-1 text-sm py-2.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-center transition-colors font-medium">
+                                <i class="fab fa-github mr-1.5"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+               <!-- Project 5: F16 -->
+                <div class="project-card group bg-zinc-950 border border-zinc-800 rounded-3xl overflow-hidden flex flex-col">
+                    <!-- Image / Visual Header -->
+                    <div class="h-48 bg-zinc-900 relative overflow-hidden">
+                        <img src="f16.jpg" 
+                            alt="Your project name" 
+                            class="w-full h-full object-cover">
+                    </div>
+                    
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-semibold text-xl tracking-tight mb-3 group-hover:text-cyan-400 transition-colors">
+                            F-16 Flight Simulator
+                        </h3>
+                        
+                        <p class="text-sm text-zinc-400 line-clamp-3 flex-1">
+                            Integrating and reburbishing a surplus Air Force F-16 fire response trainer with modern...   
+                        </p>
+                        
+                        <!-- Tech Tags -->
+                        <div class="flex flex-wrap gap-1.5 mt-4 mb-5">
+                            <span class="tech-tag">C / C++</span>
+                            <span class="tech-tag">Real-time Systems</span>
+                            <span class="tech-tag">Flight Dynamics</span>
+                            <span class="tech-tag">Embedded Systems</span>
+                            <span class="tech-tag">MATLAB</span>
+                            <span class="tech-tag">Legacy interfacing</span>
+                            
+                        </div>
+                        
+                        <!-- Buttons -->
+                        <div class="flex items-center gap-x-3 mt-auto pt-4 border-t border-zinc-800">
+                            <button onclick="showModal(4)" 
+                                    class="flex-1 text-sm py-2.5 rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-colors font-medium">
+                                Details
+                            </button>
+                            <a href="https://github.com/cockrillwf27" target="_blank"
+                            class="flex-1 text-sm py-2.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-center transition-colors font-medium">
+                                <i class="fab fa-github mr-1.5"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            
+            <div class="text-center mt-8 md:hidden">
+                <a href="https://github.com/cockrillwf27" target="_blank" class="text-sm text-cyan-400">View all projects on GitHub →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="max-w-5xl mx-auto px-6 py-20">
+        <div class="mb-10">
+            <span class="text-cyan-400 text-sm font-medium tracking-[2px]">CHAPTER 03</span>
+            <h2 class="section-header tracking-tighter">Technical Skills</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Embedded -->
+            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+                <div class="flex items-center gap-x-3 mb-4">
+                    <div class="w-9 h-9 rounded-2xl bg-cyan-400/10 flex items-center justify-center">
+                        <i class="fas fa-microcontroller text-cyan-400"></i>
+                    </div>
+                    <h4 class="font-semibold">Embedded &amp; IoT Systems</h4>
+                </div>
+                <div class="flex flex-wrap gap-2 text-sm">
+                    <span class="tech-tag">ESP32 / ESP8266</span>
+                    <span class="tech-tag">Arduino / ATmega</span>
+                    <span class="tech-tag">STM32</span>
+                    <span class="tech-tag">FreeRTOS</span>
+                    <span class="tech-tag">Low-Power Design</span>
+                    <span class="tech-tag">LoRa / WiFi / BLE</span>
+                    <span class="tech-tag">Sensor Fusion</span>
+                </div>
+            </div>
+
+            <!-- Digital Design -->
+            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+                <div class="flex items-center gap-x-3 mb-4">
+                    <div class="w-9 h-9 rounded-2xl bg-cyan-400/10 flex items-center justify-center">
+                        <i class="fas fa-microchip text-cyan-400"></i>
+                    </div>
+                    <h4 class="font-semibold">Digital Architecture &amp; HDL</h4>
+                </div>
+                <div class="flex flex-wrap gap-2 text-sm">
+                    <span class="tech-tag">SystemVerilog</span>
+                    <span class="tech-tag">Verilog</span>
+                    <span class="tech-tag">Pipelined CPUs</span>
+                    <span class="tech-tag">Hazard &amp; Forwarding</span>
+                    <span class="tech-tag">Testbenches</span>
+                    <span class="tech-tag">FPGA Prototyping</span>
+                </div>
+            </div>
+
+            <!-- Analog -->
+            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+                <div class="flex items-center gap-x-3 mb-4">
+                    <div class="w-9 h-9 rounded-2xl bg-cyan-400/10 flex items-center justify-center">
+                        <i class="fas fa-bolt text-cyan-400"></i>
+                    </div>
+                    <h4 class="font-semibold">Analog &amp; Mixed-Signal</h4>
+                </div>
+                <div class="flex flex-wrap gap-2 text-sm">
+                    <span class="tech-tag">Op-Amps &amp; Filters</span>
+                    <span class="tech-tag">Power Electronics</span>
+                    <span class="tech-tag">Boost Converters</span>
+                    <span class="tech-tag">Sensor Interfaces</span>
+                    <span class="tech-tag">Signal Conditioning</span>
+                    <span class="tech-tag">PCB Design (KiCad)</span>
+                </div>
+            </div>
+
+            <!-- AI / Edge -->
+            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+                <div class="flex items-center gap-x-3 mb-4">
+                    <div class="w-9 h-9 rounded-2xl bg-cyan-400/10 flex items-center justify-center">
+                        <i class="fas fa-brain text-cyan-400"></i>
+                    </div>
+                    <h4 class="font-semibold">Edge AI &amp; Neuromorphic</h4>
+                </div>
+                <div class="flex flex-wrap gap-2 text-sm">
+                    <span class="tech-tag">PyTorch / TensorFlow</span>
+                    <span class="tech-tag">Model Quantization</span>
+                    <span class="tech-tag">Event-Based Vision</span>
+                    <span class="tech-tag">IMX636 / Prophesee</span>
+                    <span class="tech-tag">ONNX / TensorRT</span>
+                    <span class="tech-tag">TinyML</span>
+                </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+                <div class="flex items-center gap-x-3 mb-4">
+                    <div class="w-9 h-9 rounded-2xl bg-cyan-400/10 flex items-center justify-center">
+                        <i class="fas fa-tools text-cyan-400"></i>
+                    </div>
+                    <h4 class="font-semibold">Development &amp; Debug</h4>
+                </div>
+                <div class="flex flex-wrap gap-2 text-sm">
+                    <span class="tech-tag">Git &amp; GitHub</span>
+                    <span class="tech-tag">Linux / Embedded Linux</span>
+                    <span class="tech-tag">Ghidra (RE)</span>
+                    <span class="tech-tag">Oscilloscopes</span>
+                    <span class="tech-tag">Logic Analyzers</span>
+                    <span class="tech-tag">JTAG / SWD</span>
+                </div>
+            </div>
+
+            <!-- Software -->
+            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+                <div class="flex items-center gap-x-3 mb-4">
+                    <div class="w-9 h-9 rounded-2xl bg-cyan-400/10 flex items-center justify-center">
+                        <i class="fas fa-code text-cyan-400"></i>
+                    </div>
+                    <h4 class="font-semibold">Software &amp; Math</h4>
+                </div>
+                <div class="flex flex-wrap gap-2 text-sm">
+                    <span class="tech-tag">Python (NumPy, SciPy)</span>
+                    <span class="tech-tag">MATLAB / Simulink</span>
+                    <span class="tech-tag">C / C++</span>
+                    <span class="tech-tag">Applied Mathematics</span>
+                    <span class="tech-tag">Signal Processing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE & LEADERSHIP -->
+    <section id="experience" class="border-t border-zinc-800 bg-zinc-900 py-20">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="mb-10">
+                <span class="text-cyan-400 text-sm font-medium tracking-[2px]">CHAPTER 04</span>
+                <h2 class="section-header tracking-tighter">Experience &amp; Leadership</h2>
+            </div>
+
+            <div class="space-y-8">
+                <!-- IT Role -->
+                <div class="flex gap-6">
+                    <div class="w-12 h-12 rounded-2xl bg-zinc-800 flex-shrink-0 flex items-center justify-center border border-zinc-700">
+                        <i class="fas fa-hospital text-2xl text-cyan-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-y-1">
+                            <div>
+                                <h4 class="font-semibold">HCA Healthcare</h4>
+                                <p class="text-zinc-400">TriStar Southern Hills Medical Center Technical Analyst • Nashville, TN</p>
+                            </div>
+                            <span class="text-sm text-zinc-500 font-mono">2022 — Present</span>
+                        </div>
+                        <p class="mt-3 text-sm text-zinc-300 max-w-3xl">
+                            Support mission-critical clinical and enterprise IT systems across hospital and division operations. Resolve hardware, software, 
+                            and network incidents in a high-reliability healthcare environment. 
+                            Partner with clinical and operational teams to implement solutions that improve workflow and reliability. 
+                        </p>
+                    </div>
+                </div>
+
+                <!-- VMI Leadership -->
+                <div class="flex gap-6">
+                    <div class="w-12 h-12 rounded-2xl bg-zinc-800 flex-shrink-0 flex items-center justify-center border border-zinc-700">
+                        <i class="fas fa-users text-2xl text-cyan-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-y-1">
+                            <div>
+                                <h4 class="font-semibold">Cadet Platoon Lieutenant &amp; ECE Class Representative</h4>
+                                <p class="text-zinc-400">Virginia Military Institute</p>
+                            </div>
+                            <span class="text-sm text-zinc-500 font-mono">2024 — Present</span>
+                        </div>
+                        <p class="mt-3 text-sm text-zinc-300 max-w-3xl">
+                            Lead a platoon through rigorous academic, physical, and operational requirements. 
+                            Elected by peers to represent the ECE class. Focus on developing initiative, 
+                            clear communication, and team performance under pressure.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Rugby --
+                <div class="flex gap-6">
+                    <div class="w-12 h-12 rounded-2xl bg-zinc-800 flex-shrink-0 flex items-center justify-center border border-zinc-700">
+                        <i class="fas fa-running text-2xl text-cyan-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-y-1">
+                            <div>
+                                <h4 class="font-semibold">Collegiate Rugby Athlete (Lightweight Forward)</h4>
+                                <p class="text-zinc-400">VMI Rugby • 7s &amp; 15s Seasons</p>
+                            </div>
+                            <span class="text-sm text-zinc-500 font-mono">Ongoing</span>
+                        </div>
+                        <p class="mt-3 text-sm text-zinc-300 max-w-3xl">
+                            Compete at 215 lbs in both sevens and fifteens. Emphasize physical resilience, 
+                            recovery protocols, and team strategy. Regularly prepares for PT tests including 
+                            ruck marches and max-rep strength events.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- CONTACT -->
+    <section id="contact" class="max-w-3xl mx-auto px-6 py-20 text-center">
+        <div class="mx-auto max-w-md">
+            <span class="text-cyan-400 text-sm font-medium tracking-[2px]">LET'S CONNECT</span>
+            <h2 class="section-header tracking-tighter mt-3 mb-4">Ready to build something that matters?</h2>
+           
+           <!-- <p class="text-zinc-400 mb-8">I'm currently seeking engineering internships and co-ops for Summer 2026, 
+            particularly in embedded systems, defense technology, aerospace, or healthcare hardware.</p>
+            -->
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="mailto:wfcockrilljr@gmail.com" 
+                   class="flex-1 sm:flex-none inline-flex items-center justify-center gap-x-3 h-14 px-8 rounded-2xl bg-white text-zinc-950 font-semibold hover:bg-zinc-100 active:bg-zinc-200 transition-colors">
+                    <i class="fas fa-envelope"></i>
+                    <span>Send Email</span>
+                </a>
+                
+                <a href="https://github.com/cockrillwf27" target="_blank"
+                   class="flex-1 sm:flex-none inline-flex items-center justify-center gap-x-3 h-14 px-8 rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-colors">
+                    <i class="fab fa-github text-xl"></i>
+                    <span>GitHub Profile</span>
+                </a>
+            </div>
+            
+            <p class="text-xs text-zinc-500 mt-8">Open to discussions about thesis collaboration, research opportunities, or technical projects.</p>
+        </div>
+    </section>
+
+    <footer class="border-t border-zinc-800 py-8 text-center text-xs text-zinc-500">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-y-2">
+            <div>© 2026 William F. Cockrill Jr. • VMI Class of 2027</div>
+            <div class="flex items-center gap-x-5">
+                <span>Built with Tailwind CSS</span>
+                <span class="hidden md:inline">•</span>
+                <a href="#" class="hover:text-zinc-400 transition-colors">View Source</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PROJECT MODALS -->
+    
+    <!-- Modal 1: Beehive -->
+    <div id="modal-1" onclick="if (event.target.id === 'modal-1') hideModal(1)" class="hidden fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="modal bg-zinc-900 border border-zinc-700 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-auto">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <div class="uppercase tracking-[2px] text-xs text-cyan-400 mb-1">EMBEDDED SYSTEMS • 2025</div>
+                        <h3 class="text-3xl font-semibold tracking-tight">Autonomous Beehive Monitoring System</h3>
+                    </div>
+                    <button onclick="hideModal(1)" class="text-zinc-400 hover:text-white p-2 -mr-2"><i class="fas fa-times text-2xl"></i></button>
+                </div>
+
+                <div class="prose prose-invert text-sm text-zinc-300 max-w-none">
+                    <p class="mb-4">Designed and deployed a fully autonomous, solar-capable beehive monitoring platform for remote apiary management. The system integrates multiple environmental and activity sensors with on-device intelligence to detect anomalies such as swarming, temperature stress, or hive health decline.</p>
+                    
+                    <h4 class="font-semibold text-white mt-6 mb-2">Key Features &amp; Achievements</h4>
+                    <ul class="list-disc pl-5 space-y-1.5 text-sm">
+                        <li>Multi-modal sensing: temperature, humidity, weight, acoustic activity, and bee traffic</li>
+                        <li>Edge-based anomaly detection running on resource-constrained microcontrollers</li>
+                        <li>Long-range wireless communication via LoRaWAN for remote deployments</li>
+                        <li>Ultra-low power design enabling months of operation on small battery + solar</li>
+                        <li>Led extension of the platform concept to an elephant deterrence system achieving 180+ ft detection range</li>
+                    </ul>
+
+                    <h4 class="font-semibold text-white mt-6 mb-2">Technical Stack</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">ESP32</span>
+                        <span class="tech-tag">ATmega328P</span>
+                        <span class="tech-tag">LoRa</span>
+                        <span class="tech-tag">I2C / SPI Sensors</span>
+                        <span class="tech-tag">Edge ML Inference</span>
+                        <span class="tech-tag">Python (data pipeline)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-zinc-800 p-6 flex gap-3 bg-zinc-950/50 rounded-b-3xl">
+                <a href="https://github.com/cockrillwf27" target="_blank" class="flex-1 text-center py-3 rounded-2xl bg-white text-zinc-950 font-medium text-sm">View Repository</a>
+                <button onclick="hideModal(1)" class="flex-1 text-center py-3 rounded-2xl border border-zinc-700 text-sm font-medium">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: CPU -->
+    <div id="modal-2" onclick="if (event.target.id === 'modal-2') hideModal(2)" class="hidden fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="modal bg-zinc-900 border border-zinc-700 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-auto">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <div class="uppercase tracking-[2px] text-xs text-cyan-400 mb-1">DIGITAL DESIGN • 2024</div>
+                        <h3 class="text-3xl font-semibold tracking-tight">32-bit Five-Stage Pipelined CPU</h3>
+                    </div>
+                    <button onclick="hideModal(2)" class="text-zinc-400 hover:text-white p-2 -mr-2"><i class="fas fa-times text-2xl"></i></button>
+                </div>
+
+                <div class="prose prose-invert text-sm text-zinc-300 max-w-none">
+                    <p class="mb-4">Architected and implemented a complete 32-bit processor core in SystemVerilog following a classic five-stage pipeline (Instruction Fetch, Decode, Execute, Memory, Writeback). The design includes full hazard detection and resolution through forwarding paths and pipeline stalling.</p>
+                    
+                    <h4 class="font-semibold text-white mt-6 mb-2">Key Features</h4>
+                    <ul class="list-disc pl-5 space-y-1.5 text-sm">
+                        <li>Standard 5-stage RISC pipeline with correct data hazard handling</li>
+                        <li>Operand forwarding logic to minimize stalls</li>
+                        <li>Comprehensive hazard detection unit</li>
+                        <li>Modular, synthesizable SystemVerilog code</li>
+                        <li>Extensive testbench suite with directed and random testing</li>
+                    </ul>
+
+                    <h4 class="font-semibold text-white mt-6 mb-2">Verification Approach</h4>
+                    <p>Developed self-checking testbenches covering arithmetic, memory operations, branching, and hazard scenarios. Used simulation tools to validate correct execution across pipeline interactions.</p>
+
+                    <div class="flex flex-wrap gap-2 mt-5">
+                        <span class="tech-tag">SystemVerilog</span>
+                        <span class="tech-tag">ModelSim / Questa</span>
+                        <span class="tech-tag">Digital Design</span>
+                        <span class="tech-tag">Computer Architecture</span>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-zinc-800 p-6 flex gap-3 bg-zinc-950/50 rounded-b-3xl">
+                <a href="https://github.com/cockrillwf27" target="_blank" class="flex-1 text-center py-3 rounded-2xl bg-white text-zinc-950 font-medium text-sm">View Repository</a>
+                <button onclick="hideModal(2)" class="flex-1 text-center py-3 rounded-2xl border border-zinc-700 text-sm font-medium">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Neuromorphic -->
+    <div id="modal-3" onclick="if (event.target.id === 'modal-3') hideModal(3)" class="hidden fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="modal bg-zinc-900 border border-zinc-700 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-auto">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <div class="uppercase tracking-[2px] text-xs text-cyan-400 mb-1">HONORS THESIS • 2026–2027</div>
+                        <h3 class="text-3xl font-semibold tracking-tight">Event-Based Vision for Non-Invasive Legacy Control Monitoring</h3>
+                    </div>
+                    <button onclick="hideModal(3)" class="text-zinc-400 hover:text-white p-2 -mr-2"><i class="fas fa-times text-2xl"></i></button>
+                </div>
+
+                <div class="prose prose-invert text-sm text-zinc-300 max-w-none">
+                    <p class="mb-4">Institute Honors thesis investigating neuromorphic event-based vision sensors as a non-invasive method for real-time observability of legacy analog control interfaces, gauges, and human-machine interactions in mission-critical environments.</p>
+                    
+                    <h4 class="font-semibold text-white mt-6 mb-2">Research Focus</h4>
+                    <ul class="list-disc pl-5 space-y-1.5 text-sm">
+                        <li>Comparison of event-based cameras vs. traditional RGB cameras for dynamic interface monitoring (power, latency, data volume)</li>
+                        <li>Development of testbed with representative analog gauges and control panels</li>
+                        <li>Mapping event data streams to actionable AI inference for anomaly and action detection</li>
+                        <li>Exploration of applications in healthcare (alarm fatigue reduction) and defense/aerospace legacy systems</li>
+                    </ul>
+
+                    <h4 class="font-semibold text-white mt-6 mb-2">Hardware &amp; Methodology</h4>
+                    <p>Utilizing sensors such as the Lucid Triton 2 (IMX636) event camera. Work includes data acquisition pipelines, event-to-frame conversion strategies, model training on edge hardware (NVIDIA RTX), and quantitative benchmarking.</p>
+
+                    <div class="flex flex-wrap gap-2 mt-5">
+                        <span class="tech-tag">Event-Based Vision</span>
+                        <span class="tech-tag">IMX636</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Neuromorphic Computing</span>
+                        <span class="tech-tag">Edge Deployment</span>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-zinc-800 p-6 flex gap-3 bg-zinc-950/50 rounded-b-3xl">
+                <a href="https://github.com/cockrillwf27" target="_blank" class="flex-1 text-center py-3 rounded-2xl bg-white text-zinc-950 font-medium text-sm">View Repository</a>
+                <button onclick="hideModal(3)" class="flex-1 text-center py-3 rounded-2xl border border-zinc-700 text-sm font-medium">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent', '#22d3ee');
+        }
+
+        // Mobile menu
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileBtn.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+            
+            // Close mobile menu when clicking a link
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    const icon = mobileBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        }
+
+        // Modal functions
+        function showModal(projectNum) {
+            const modal = document.getElementById(`modal-${projectNum}`);
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function hideModal(projectNum) {
+            const modal = document.getElementById(`modal-${projectNum}`);
+            if (modal) {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close modals with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.fixed.inset-0').forEach(modal => {
+                    if (!modal.classList.contains('hidden')) {
+                        modal.classList.remove('flex');
+                        modal.classList.add('hidden');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+        });
+
+        // Smooth scroll for nav links (with offset for fixed nav)
+        function initializeSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        e.preventDefault();
+                        const navHeight = 64;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.scrollY - navHeight;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Active nav highlighting (optional enhancement)
+        function initializeActiveNav() {
+            const sections = ['about', 'projects', 'skills', 'experience'];
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                const scrollY = window.scrollY + 100;
+                
+                sections.forEach(sectionId => {
+                    const section = document.getElementById(sectionId);
+                    if (section && section.offsetTop <= scrollY) {
+                        current = sectionId;
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('nav-active', 'text-cyan-400');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('nav-active', 'text-cyan-400');
+                    }
+                });
+            });
+        }
+
+        // Keyboard accessibility for project cards
+        function initializeCardKeyboard() {
+            document.querySelectorAll('.project-card').forEach((card, index) => {
+                card.setAttribute('tabindex', '0');
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        showModal(index + 1);
+                    }
+                });
+            });
+        }
+
+        // Initialize everything
+        function init() {
+            initializeTailwind();
+            initializeSmoothScroll();
+            initializeActiveNav();
+            initializeCardKeyboard();
+            
+            // Easter egg: Konami code hint in console
+            console.log('%c[Portfolio] Tip: Press "e" three times while on this page for a surprise.', 'color:#3f3f46');
+            
+            // Subtle console branding
+            console.log('%c[William Cockrill ECE Portfolio] Ready. Built for clarity and impact.', 'color:#64748b; font-size: 9px');
+        }
+
+        window.onload = init;
+        
+        // Fun little interaction: press "e" 3 times to highlight all project cards
+        let eCount = 0;
+        document.addEventListener('keypress', function(e) {
+            if (e.key.toLowerCase() === 'e') {
+                eCount++;
+                if (eCount === 3) {
+                    document.querySelectorAll('.project-card').forEach(card => {
+                        card.style.transitionDuration = '80ms';
+                        card.style.boxShadow = '0 0 0 3px rgb(103 232 249 / 0.4)';
+                        setTimeout(() => {
+                            card.style.boxShadow = '';
+                            card.style.transitionDuration = '0.2s';
+                        }, 1200);
+                    });
+                    eCount = 0;
+                }
+            } else {
+                eCount = 0;
+            }
+        });
+    </script>
+</body>
+</html>
