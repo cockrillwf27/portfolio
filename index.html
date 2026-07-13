@@ -14,6 +14,8 @@
     gtag('config', 'G-4JHXEZX7SY');
     </script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
 
     <title>William F Cockrill Jr • ECE Portfolio • VMI Class of 2027</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -248,29 +250,27 @@
 
 <header class="pt-16 min-h-[100dvh] flex items-center relative overflow-hidden circuit-bg">
     
-    <!-- Animated Background Canvas -->
-    <canvas id="hero-canvas" class="absolute inset-0 w-full h-full z-0"></canvas>
+    <!-- Three.js 3D Electromagnetic Field Background -->
+    <canvas id="three-canvas" class="absolute inset-0 w-full h-full z-0"></canvas>
     
-    <!-- Dark overlay -->
-    <div class="absolute inset-0 bg-zinc-950/70 z-10"></div>
+    <!-- Dark overlay for text readability -->
+    <div class="absolute inset-0 bg-zinc-950/65 z-10"></div>
 
     <div class="max-w-5xl mx-auto px-6 pt-12 pb-16 relative z-20">
         <div class="max-w-3xl">
             
-                        <!-- Clickable VMI Honors Badge -->
+            <!-- Clickable VMI Honors Badge -->
             <a href="https://www.vmi.edu/academics/peay-merit-scholarships/" target="_blank"
-            class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-2xl bg-zinc-900 border border-zinc-800 mb-6 
-                    animate-[fadeInLeft_0.8s_ease-out_0.6s_forwards] opacity-0 
-                    hover:bg-zinc-800 hover:border-zinc-700 transition-colors">
-                
+               class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-2xl bg-zinc-900 border border-zinc-800 mb-6 
+                      animate-[fadeInLeft_0.8s_ease-out_0.6s_forwards] opacity-0 
+                      hover:bg-zinc-800 hover:border-zinc-700 transition-colors">
                 <div class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
-                
                 <span class="text-sm text-zinc-400 hover:text-zinc-200 transition-colors">
                     VMI Institute Honors • Merit Scholar • Class of 2027
                 </span>
             </a>
 
-            <!-- Heading + Paragraph (fade + slide down from top) -->
+            <!-- Heading + Paragraph -->
             <div class="animate-[fadeInDown_0.8s_ease-out_0.4s_forwards] opacity-0">
                 <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter leading-none mb-4">
                     Building mission-critical<br>embedded systems.
@@ -283,7 +283,7 @@
                 </p>
             </div>
 
-            <!-- Buttons (slide in from left) -->
+            <!-- Buttons -->
             <div class="flex flex-wrap items-center gap-4 animate-[fadeInLeft_0.8s_ease-out_0.9s_forwards] opacity-0">
                 <button onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })" 
                         class="group flex items-center justify-center gap-x-3 bg-white hover:bg-zinc-100 active:bg-zinc-200 transition-all text-zinc-950 font-semibold px-8 h-14 rounded-2xl text-base shadow-lg shadow-black/20">
@@ -298,7 +298,7 @@
                 </button>
             </div>
 
-            <!-- Stats (slide in from left) -->
+            <!-- Stats -->
             <div class="flex items-center gap-x-8 mt-12 text-sm animate-[fadeInLeft_0.8s_ease-out_1.2s_forwards] opacity-0">
                 <div>
                     <span class="block text-2xl font-semibold tracking-tighter">3.75</span>
@@ -1271,88 +1271,132 @@
         });
     </script>
 
-   <script>
-    const canvas = document.getElementById('hero-canvas');
-    const ctx = canvas.getContext('2d');
+<script>
+    // =============================================
+    // MATHEMATICAL WAVE FIELD - Particles Only
+    // =============================================
+    const canvas = document.getElementById('three-canvas');
+    const renderer = new THREE.WebGLRenderer({ 
+        canvas: canvas, 
+        antialias: true, 
+        alpha: true 
+    });
+    
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
-    let particles = [];
-    const particleCount = 95;           // Increased from 50 → more dots
-    const maxDistance = 170;            // Increased from 140 → more connections
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(48, window.innerWidth / window.innerHeight, 0.1, 300);
+    camera.position.set(0, 5.5, 15);
+    camera.lookAt(0, 2, 0);
 
-    function resizeCanvas() {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
+    // Surface grid (for the wave function)
+    const resX = 38;
+    const resZ = 38;
+    const sizeX = 36;
+    const sizeZ = 36;
+
+    const geometry = new THREE.PlaneGeometry(sizeX, sizeZ, resX, resZ);
+    const positions = geometry.attributes.position;
+
+    // Store original positions
+    const originalX = new Float32Array(positions.count);
+    const originalZ = new Float32Array(positions.count);
+    for (let i = 0; i < positions.count; i++) {
+        originalX[i] = positions.array[i * 3];
+        originalZ[i] = positions.array[i * 3 + 2];
     }
 
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    // High-density flowing particles
+    const particleCount = 10000;
+    const particlePositions = new Float32Array(particleCount * 3);
+    const particleGeometry = new THREE.BufferGeometry();
+    particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
 
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2.2 + 1.1;   // Slightly bigger particles
-            this.speedX = Math.random() * 0.35 - 0.175;
-            this.speedY = Math.random() * 0.35 - 0.175;
-        }
+    const particleMaterial = new THREE.PointsMaterial({
+        color: 0xef1111,
+        size: 0.055,
+        transparent: true,
+        opacity: 1.92,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+    });
+    const particles = new THREE.Points(particleGeometry, particleMaterial);
+    scene.add(particles);
 
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-
-            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-        }
-
-        draw() {
-            ctx.fillStyle = '#ff3c3c';   // You can change this color original: f87171
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
-
-    function initParticles() {
-        particles = [];
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
-    }
-
-    function connectParticles() {
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < maxDistance) {
-                    // Stronger line opacity for more vibrancy
-                  //  ctx.strokeStyle = `rgba(220, 38, 38, ${1.1 - distance / maxDistance})`;
-                  ctx.strokeStyle = `rgba(255, 0, 0, ${0.95 - (distance / maxDistance) * 0.5})`;
-                    ctx.lineWidth = 1.3;
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.stroke();
-                }
-            }
-        }
-    }
+    let globalPhase = 0;
 
     function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        for (let i = 0; i < particles.length; i++) {
-            particles[i].update();
-            particles[i].draw();
-        }
-
-        connectParticles();
         requestAnimationFrame(animate);
+        globalPhase += 0.0015; // Very slow global phase
+
+        // Update wave surface
+        for (let i = 0; i < positions.count; i++) {
+            const x = originalX[i];
+            const z = originalZ[i];
+
+            const wave = 
+                Math.sin(0.62 * z - globalPhase * 1.55) * 2.1 +
+                Math.sin(0.45 * x + globalPhase * 1.05) * 1.3 +
+                Math.sin(0.29 * (x + z) - globalPhase * 0.95) * 1.0;
+
+            positions.array[i * 3 + 1] = wave;
+        }
+        geometry.attributes.position.needsUpdate = true;
+
+        // Update particles (smooth flow across the surface)
+        const pPos = particleGeometry.attributes.position;
+
+        for (let i = 0; i < particleCount; i++) {
+            let px = ((i * 0.79) % resX) / resX * sizeX - sizeX / 2;
+            let pz = ((i * 1.31) % resZ) / resZ * sizeZ - sizeZ / 2;
+
+            // Sample local field strength
+            const localIntensity = 
+                Math.abs(Math.sin(0.62 * pz - globalPhase * 1.55) * 2.1 +
+                         Math.sin(0.45 * px + globalPhase * 1.05) * 1.3);
+
+            // Speed based on local intensity
+            const speed = 0.021 + localIntensity * 0.013;
+
+            // Move particles toward the viewer
+            pz -= speed * 1.75;
+
+            // Gentle side-to-side drift
+            px += Math.sin(globalPhase * 1.9 + i * 0.4) * 0.035;
+
+            // Wrap when reaching the front
+            if (pz < -sizeZ / 2) pz = sizeZ / 2;
+
+            // Get new height
+            const newHeight = 
+                Math.sin(0.62 * pz - globalPhase * 1.55) * 2.1 +
+                Math.sin(0.45 * px + globalPhase * 1.05) * 1.3 +
+                Math.sin(0.29 * (px + pz) - globalPhase * 0.95) * 1.0;
+
+            pPos.array[i * 3] = px;
+            pPos.array[i * 3 + 1] = newHeight;
+            pPos.array[i * 3 + 2] = pz;
+        }
+        pPos.needsUpdate = true;
+
+        // Slow elegant camera movement
+        const t = Date.now() * 0.00005;
+        camera.position.x = Math.sin(t) * 1.3;
+        camera.position.y = 5.5 + Math.sin(t * 0.35) * 0.35;
+        camera.lookAt(0, 2.2, 0);
+
+        renderer.render(scene, camera);
     }
 
-    initParticles();
+    function onResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+    window.addEventListener('resize', onResize);
+
+    renderer.render(scene, camera);
     animate();
 </script>
 
